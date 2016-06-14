@@ -1,9 +1,9 @@
 build:
   image: node:4
   commands:
-    - npm install --no-progress --color --quiet --unsafe-perm
-    - npm test
-    - npm run upload-artifacts
+    - npm install --no-progress --color --quiet --unsafe-perm > npm-install.log
+    - npm test --color
+    - npm run upload-artifacts --color
 clone:
   depth: 10
 cache:
