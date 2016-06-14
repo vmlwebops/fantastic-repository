@@ -2,6 +2,8 @@
 import * as fs from "fs-extra"
 import * as chalk from "chalk"
 
+console.log(chalk.underline("_"), chalk.reset("_"))
+
 // Just some test scripts
 let files = fs.readdirSync(__dirname)
 files.forEach(str => {
