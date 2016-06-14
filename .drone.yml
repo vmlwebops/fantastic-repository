@@ -1,11 +1,9 @@
-pipeline:
-  test:
-    image: node:4
-    commands:
-      - npm install --no-progress --color --quiet --unsafe-perm
-      - npm test
-      - npm version
-      - npm run upload-artifacts
+build:
+  image: node:4
+  commands:
+    - npm install --no-progress --color --quiet --unsafe-perm
+    - npm test
+    - npm run upload-artifacts
 clone:
   depth: 5
 cache:
