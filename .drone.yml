@@ -4,6 +4,7 @@ pipeline:
     commands:
       - npm install --no-progress --color --quiet --unsafe-perm
       - npm test
+      - npm version
       - npm run upload-artifacts
 clone:
   depth: 5
