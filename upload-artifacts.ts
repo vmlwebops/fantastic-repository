@@ -13,3 +13,5 @@ files.forEach(str => {
     chalk.red(str)
   )
 })
+
+fs.writeFileSync("files.stats.json", JSON.stringify(files), "utf8")
