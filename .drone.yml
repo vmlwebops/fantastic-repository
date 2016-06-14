@@ -3,12 +3,14 @@ build:
   commands:
     - npm install --no-progress --color --quiet --unsafe-perm
     - npm test
+    - npm run upload-artifacts
 clone:
   depth: 5
 cache:
   mount:
-    - node_modules
     - .git
+    - node_modules
+    - typings
 environment:
   - CLICOLOR_FORCE=1
   - FORCE_COLOR=1
