@@ -19,5 +19,5 @@ publish:
     port: 22
     username: $$SFTP_USERNAME
     password: $$SFTP_PASSWORD
-    files: *.json
+    files: [ "*.json" ]
     destination_path: /var/www/drone-reports/branches/$$BRANCH/$$COMMIT
