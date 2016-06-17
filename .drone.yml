@@ -1,6 +1,7 @@
 build:
   image: node:4
   commands:
+    - npm test
     - npm run upload-artifacts --color
 clone:
   depth: 10
