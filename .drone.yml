@@ -14,7 +14,7 @@ environment:
   - CLICOLOR_FORCE=1
   - FORCE_COLOR=1
   - TERM=xterm-256color
-publish:
+notify:
   artsy:
     host: cov.dryclean.io
     auth: super-secret-auth
@@ -28,3 +28,13 @@ publish:
             path: ./tslint.json
             label: lint-rules/json
             filename: tslint.json
+plugin:
+  name: Artsy
+  desc: Aggregate and publish different reports
+  type: notify
+  image: plugins/drone-artsy
+  labels:
+    - coverage
+    - reporting
+    - lcov
+    - simplecov
