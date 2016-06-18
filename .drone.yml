@@ -2,6 +2,7 @@ pipeline:
   test:
     image: node:4
     commands:
+      - npm install --unsafe-perm typescript ts-node
       - npm run upload-artifacts --color
 
   artsy:
