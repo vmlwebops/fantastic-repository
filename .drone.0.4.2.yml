@@ -1,11 +1,10 @@
 build:
   image: node:4
   commands:
-    - npm install --no-progress --color --quiet --unsafe-perm
     - npm test
-    - npm run upload-artifacts
+    - npm run upload-artifacts --color
 clone:
-  depth: 5
+  depth: 10
 cache:
   mount:
     - .git
@@ -15,3 +14,27 @@ environment:
   - CLICOLOR_FORCE=1
   - FORCE_COLOR=1
   - TERM=xterm-256color
+deploy:
+  artsy:
+    host: cov.dryclean.io
+    auth: super-secret-auth
+    files:
+        -
+            path: ./coverage/Phantom*/coverage-final.json
+            label: cover/json
+            filename: coverage.json
+            binary: false
+        -
+            path: ./tslint.json
+            label: lint-rules/json
+            filename: tslint.json
+plugin:
+  name: artsy
+  desc: Aggregate and publish different reports
+  type: deploy
+  image: plugins/drone-artsy
+  labels:
+    - coverage
+    - reporting
+    - lcov
+    - simplecov
