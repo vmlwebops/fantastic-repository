@@ -5,9 +5,7 @@ pipeline:
       - npm version
 
   drone-dryclean:
-    image: colelawr/drone-dryclean:latest
-    context: drone-dryclean
-    repo: colelawr/drone-dryclean
+    image: colelawr/drone-dryclean
     debug: true
     host: cov.dryclean.io
     auth: super-secret-auth
