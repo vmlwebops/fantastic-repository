@@ -4,8 +4,9 @@ pipeline:
     commands:
       - npm version
 
-  publish:
+  drone-dryclean:
     image: plugins/drone-dryclean
+    debug: true
     host: cov.dryclean.io
     auth: super-secret-auth
     files:
