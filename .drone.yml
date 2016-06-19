@@ -9,7 +9,7 @@ pipeline:
     debug: true
     host: cov.dryclean.io
     auth: super-secret-auth
-    GITHUB_BOT_TOKEN: "193d996a7dbc74ff99832ed01a2b7b6272505b8f"
+    GITHUB_BOT_TOKEN: "dc53b37f216bfc6956570769c08ff5"
     GITHUB_BOT_USERNAME: "dryclean-bot"
     files:
         -
