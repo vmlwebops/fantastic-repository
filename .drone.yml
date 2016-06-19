@@ -10,12 +10,12 @@ pipeline:
     files:
         -
             path: ./coverage/Phantom*/coverage-final.json
-            label: Coverage.json
+            label: jasmine-coverage.json
             postprocessor: cobertura
         -
-            path: ./tslint.json
-            label: codestyle.json
-            postprocessor: lint
+            path: ./tslint-checkstyle.txt
+            label: tslint.txt
+            postprocessor: checkstyle
 
 clone:
   depth: 5
