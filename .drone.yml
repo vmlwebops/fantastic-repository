@@ -3,6 +3,8 @@ pipeline:
     image: node:4
     commands:
       - npm version
+      - create-diff.sh > build.diff
+      - git diff $DRONE_PREV_COMMIT_SHA $DRONE_COMMIT --name-only > test.diff
 
   drone-dryclean:
     image: colelawr/drone-dryclean
@@ -12,6 +14,14 @@ pipeline:
     GITHUB_BOT_TOKEN: "dc53b37f216bfc6956570769c08ff5"
     GITHUB_BOT_USERNAME: "dryclean-bot"
     files:
+        -
+            path: ./build.diff
+            label: build.diff
+            loader: "diff-intersection"
+        -
+            path: ./test.diff
+            label: test.diff
+            loader: "diff-intersection"
         -
             path: ./coverage/Phantom*/coverage-final.json
             label: jasmine-coverage.json
