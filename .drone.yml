@@ -3,7 +3,7 @@ pipeline:
     image: node:4
     commands:
       - npm version
-      - create-diff.sh > build.diff
+      - sh ./create-diff.sh > build.diff
       - git diff $DRONE_PREV_COMMIT_SHA $DRONE_COMMIT --name-only > test.diff
 
   drone-dryclean:
