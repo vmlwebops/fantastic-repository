@@ -13,11 +13,11 @@ pipeline:
         -
             path: ./coverage/Phantom*/coverage-final.json
             label: jasmine-coverage.json
-            postprocessor: cobertura
+            loader: "dctest?format=json"
         -
-            path: ./tslint-checkstyle.txt
+            path: ./tslint-prose.txt
             label: tslint.txt
-            postprocessor: checkstyle
+            loader: "dclint?format=tslint-prose&github=true"
 
 clone:
   depth: 5
