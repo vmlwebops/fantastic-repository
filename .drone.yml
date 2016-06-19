@@ -2,11 +2,9 @@ pipeline:
   test:
     image: node:4
     commands:
-      - npm install --quiet --unsafe-perm
-      - npm test
-      - npm run upload-artifacts --color
+      - npm version
 
-  artsy:
+  dryclean:
     host: cov.dryclean.io
     auth: super-secret-auth
     files:
