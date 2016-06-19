@@ -14,12 +14,8 @@ pipeline:
     GITHUB_BOT_USERNAME: "dryclean-bot"
     files:
         -
-            path: ./build.diff
-            label: build.diff
-            loader: "diff-intersection"
-        -
-            path: ./test.diff
-            label: test.diff
+            path: ./last.diff
+            label: last.diff
             loader: "diff-intersection"
         -
             path: ./coverage/Phantom*/coverage-final.json
