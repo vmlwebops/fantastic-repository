@@ -10,13 +10,12 @@ pipeline:
     files:
         -
             path: ./coverage/Phantom*/coverage-final.json
-            label: cover/json
-            filename: coverage.json
-            binary: false
+            label: Coverage.json
+            postprocessor: cobertura
         -
             path: ./tslint.json
-            label: lint-rules/json
-            filename: tslint.json
+            label: codestyle.json
+            postprocessor: lint
 
 clone:
   depth: 5
