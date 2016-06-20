@@ -20,8 +20,8 @@ pipeline:
         loader: "dc-coverage?json=final-report.json&github=comment-link"
       -
         path: ./reports/tslint-prose.txt
-        label: tslint.txt
-        loader: "dc-diff-lint?format=tslint-prose&github=status"
+        label: TSLint
+        loader: "dc-diff-lint?format=tslint-prose&github=status&comment-link"
 
 clone:
   depth: 5
