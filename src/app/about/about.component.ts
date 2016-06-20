@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {DrawHereComponent} from './draw-here/draw-here.component';
 
 /*
  * We're loading this component asynchronously
@@ -15,13 +16,16 @@ console.log('`About` component loaded asynchronously');
       font-family: Arial, Helvetica, sans-serif
     }
   `],
+  directives: [
+    DrawHereComponent,
+  ],
   template: `
   <md-card>
     <h1>
       patrick@AngularClass.com
     </h1>
   </md-card>
-
+  <draw-here></draw-here>
   `
 })
 export class About {
