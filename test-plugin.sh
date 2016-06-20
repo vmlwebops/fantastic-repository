@@ -1,3 +1,4 @@
+# This needs to be updated for Drone 0.5.0
 docker run -i colelawr/drone-dryclean <<EOF
 {
     "repo": {

@@ -43,7 +43,7 @@
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
 
-    "lint": "tslint 'src/**/*.ts' --out ./tslint-prose.txt --format prose --force",
+    "lint": "tslint 'src/**/*.ts' --out ./reports/tslint-prose.txt --format prose --force",
 
       "pree2e": "npm run webdriver:update -- --standalone",
     "e2e": "npm run protractor",

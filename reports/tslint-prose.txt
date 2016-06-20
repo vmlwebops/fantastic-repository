@@ -1,0 +1,83 @@
+src/app/about/about.component.ts[6, 1]: exceeds maximum line length of 90
+src/app/about/about.component.ts[41, 1]: exceeds maximum line length of 90
+src/app/about/about.component.ts[48, 1]: exceeds maximum line length of 90
+src/app/about/draw-here/draw-here.component.ts[11, 1]: exceeds maximum line length of 90
+src/app/about/draw-here/draw-here.component.ts[23, 1]: exceeds maximum line length of 90
+src/app/about/draw-here/draw-here.component.ts[48, 1]: exceeds maximum line length of 90
+src/app/about/draw-here/draw-here.component.ts[26, 39]: " should be '
+src/app/about/draw-here/draw-here.component.ts[71, 12]: " should be '
+src/app/about/draw-here/draw-here.component.ts[1, 62]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[3, 56]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[15, 36]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[16, 40]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[17, 29]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[18, 29]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[19, 28]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[23, 95]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[24, 28]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[25, 29]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[26, 72]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[27, 26]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[28, 46]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[29, 32]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[30, 30]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[39, 7]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[33, 65]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[34, 64]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[36, 30]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[37, 26]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[56, 7]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[41, 28]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[42, 25]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[43, 22]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[45, 46]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[46, 46]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[49, 54]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[50, 55]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[51, 56]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[54, 33]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[55, 76]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[60, 7]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[58, 29]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[59, 27]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[64, 7]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[62, 29]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[63, 27]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[67, 7]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[66, 70]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[71, 78]: missing semicolon
+src/app/about/draw-here/draw-here.component.ts[48, 49]: missing whitespace
+src/app/about/draw-here/draw-here.component.ts[48, 51]: missing whitespace
+src/app/about/draw-here/draw-here.component.ts[48, 71]: missing whitespace
+src/app/about/draw-here/getOffsetFromPage.ts[1, 11]: name must be in pascal case
+src/app/about/draw-here/getOffsetFromPage.ts[2, 16]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[3, 15]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[7, 15]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[8, 14]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[9, 18]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[11, 35]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[12, 33]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[13, 48]: missing semicolon
+src/app/about/draw-here/getOffsetFromPage.ts[16, 23]: missing semicolon
+src/app/app.component.ts[76, 1]: exceeds maximum line length of 90
+src/app/app.component.ts[77, 1]: exceeds maximum line length of 90
+src/app/app.component.ts[95, 1]: exceeds maximum line length of 90
+src/app/home/home.component.ts[25, 1]: exceeds maximum line length of 90
+src/app/router-active/router-active.directive.ts[16, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[3, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[8, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[16, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[22, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[27, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[45, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[50, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[94, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[96, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[100, 1]: exceeds maximum line length of 90
+src/custom-typings.d.ts[106, 1]: exceeds maximum line length of 90
+src/main.browser.ts[41, 1]: exceeds maximum line length of 90
+src/main.browser.ts[43, 1]: exceeds maximum line length of 90
+src/polyfills.ts[2, 1]: exceeds maximum line length of 90
+src/vendor.ts[1, 1]: exceeds maximum line length of 90
+src/vendor.ts[2, 1]: exceeds maximum line length of 90
+src/vendor.ts[3, 1]: exceeds maximum line length of 90
