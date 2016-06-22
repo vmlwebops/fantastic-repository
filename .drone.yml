@@ -10,6 +10,26 @@ pipeline:
     coverage: reports/coverage/Phantom*/cobertura-final.xml
     compare_branch: develop
     output: diff-cover.txt
+    
+  publish:
+    image: vml/publish-files
+    path: diff-cover.txt
+    output: diff-cover.url
+  
+  notify:
+    image: vml/github-notify
+    api-token: WAAWDAWDADW
+    message: ```
+    Diff-cover results: $(cat diff-cover.url)
+    ```
+
+  deploy:
+    when:
+      branch: feature/*
+    image: vml/vhosting
+    message: ```
+    Diff-cover results: $(cat diff-cover.url)
+    ```
 
 clone:
   depth: 5
