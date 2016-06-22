@@ -5,26 +5,11 @@ pipeline:
       - npm version
       - git diff $DRONE_PREV_COMMIT_SHA $DRONE_COMMIT --name-only > last.diff
 
-  drone-dryclean:
-    image: colelawr/drone-dryclean
-    debug: true
-    host: cov.dryclean.io
-    auth: super-secret-auth
-    GITHUB_BOT_TOKEN: "dc53b37f216bfc6956570769c08ff5"
-    GITHUB_BOT_USERNAME: "dryclean-bot"
-    files:
-        -
-            path: ./last.diff
-            label: last.diff
-            loader: "diff-intersection"
-        -
-            path: ./coverage/Phantom*/coverage-final.json
-            label: jasmine-coverage.json
-            loader: "dctest?format=json"
-        -
-            path: ./tslint-prose.txt
-            label: tslint.txt
-            loader: "dclint?format=tslint-prose&github=true"
+  diff-cover:
+    image: dryclean/drone-diff-cover
+    coverage: reports/coverage/Phantom*/cobertura-final.xml
+    compare_branch: develop
+    output: diff-cover.txt
 
 clone:
   depth: 5
