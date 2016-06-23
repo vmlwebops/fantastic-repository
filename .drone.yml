@@ -44,6 +44,7 @@ pipeline:
     #          Counts the number of items in the pwd
     # The following could be a regex written to match 0 linting errors
     if: '/\w+/.test(\`$(cat reports/lint.txt)\`)'
+    # eval echo 'module.exports = '$(echo \"$PLUGIN_IF\") > plugin-if.js
     out: "drone-comments/linting"
     body: |
       **Linting Errors Found**
@@ -81,10 +82,12 @@ pipeline:
   # 2.3 Status Diff-cover
   status-diff-cover:
     image: plugins/drone-wire-status
-    succeed-if: |
-      # succeed if coverage above 30%
-      let cov = /Coverage\: ([\d\.]+)%/.exec(\`$(cat reports/diff-cover.txt)\`)
-      return cov && parseFloat(cov) > 30 /*`*/
+    # succeed if coverage above 30%
+    succeed_if: |
+      function () {
+        var cov = /Coverage\: ([\d\.]+)%/.exec(\`$(cat reports/diff-cover.txt)\`)
+        return cov && parseFloat(cov[1]) > 30 /*`*/
+      }()
     url: '$(cat uploads/diff-cover.url)'
 
   # 3. Post Comments to Github
