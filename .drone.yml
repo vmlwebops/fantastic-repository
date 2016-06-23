@@ -14,8 +14,10 @@ pipeline:
     environment:
       - FORCE_COLOR
     commands:
+      - npm version
+      - ls -lah
       #- npm install --unsafe-perm > npm-install.log
-      - mkdir reports
+      #- mkdir reports
       #- npm run lint --out=reports/lint.txt
       #- npm test --report-html=reports/test-report/ --coverage-out=reports/cobertura-coverage.xml --report-json=reports/test-report.json
 
