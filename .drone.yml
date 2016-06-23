@@ -1,40 +1,94 @@
+# TOC
+# 1. Run Linting / Run Tests
+#   1.1 Upload Test Report
+#   1.2 Status Test Report
+#   1.3 Comment Linting
+# 2. Run Diff-cover
+#   2.1 Upload Diff-cover
+#   2.2 Comment Diff-cover
+# 3. Post Comments and Statuses to Github
+
 pipeline:
   test:
-    image: node:4
+    image: node:6
+    environment:
+      - FORCE_COLOR
     commands:
-      - npm version
-      - git diff $DRONE_PREV_COMMIT_SHA $DRONE_COMMIT --name-only > last.diff
+      - npm install --unsafe-perm > npm-install.log
+      - mkdir reports
+      - npm run lint --out=reports/lint.txt
+      - npm test --report-html=reports/test-report/ --coverage-out=reports/cobertura-coverage.xml --report-json=reports/test-report.json
 
-  diff-cover:
-    image: dryclean/drone-diff-cover
-    coverage: reports/coverage/Phantom*/cobertura-final.xml
-    compare_branch: develop
-    output: diff-cover.txt
-    
-  publish:
-    image: vml/publish-files
-    path: diff-cover.txt
-    output: diff-cover.url
-  
-  notify:
-    image: vml/github-notify
-    api-token: WAAWDAWDADW
-    message: ```
-    Diff-cover results: $(cat diff-cover.url)
-    ```
+  # 1.1 Upload Test Report
+  upload-test-report:
+    image: plugins/drone-upload-client
+    path: 'reports/test-report/'
+    output: 'uploads/test-report.url'
 
-  deploy:
-    when:
-      branch: feature/*
-    image: vml/vhosting
-    message: ```
-    Diff-cover results: $(cat diff-cover.url)
-    ```
+  # 1.2 Status Test Report
+  status-test-report:
+    image: plugins/drone-wire-status # `wire` is arbitrary name to tie the status creation with the status poster
+    input: 'reports/test-report.json'
+    url: 'uploads/test-report.url' # Link to test report html such as mochawesome
 
-clone:
-  depth: 5
+  # 1.3 Comment Linting
+  comment-linting:
+    image: plugins/drone-create-file
+    # Check length of file, if file has anything in it
+    # this could be run as an argument of node -e,
+    # Example: node -p "\`hello\`.replace(/[^l]/g, '').length"
+    #          Counts the occurrences of the letter l in "hello"
+    # Example: node -p "\`$(ls)\`.split(/\s+/g).length"
+    #          Counts the number of items in the pwd
+    # The following could be a regex written to match 0 linting errors
+    if: "/\w+/.test(\`$(cat reports/lint.txt)\`)"
+    out: "drone-comments/linting"
+    body: |
+      **Linting Errors Found**
+      ```
+      # Just cat the file into the comment
+      $(cat reports/lint.txt)
+      ```
 
-environment:
-  - CLICOLOR_FORCE=1
-  - FORCE_COLOR=1
-  - TERM=xterm-256color
+  # 2. Run Diff-cover
+  run-diff-cover:
+    image: plugins/drone-diff-cover
+    compare-branch: development
+    cobertura-file: 'reports/cobertura-coverage.xml'
+    output: 'reports/diff-cover.txt'
+
+  # 2.1 Upload Diff-cover
+  upload-diff-cover:
+    image: plugins/drone-upload-client
+    path: 'reports/diff-cover.txt'
+    output: 'uploads/diff-cover.url'
+
+  # 2.2 Comment Diff-cover
+  comment-diff-cover:
+    image: plugins/drone-create-file
+    # true would be default
+    if: 'true'
+    out: "drone-comments/diff-cover"
+    body: |
+      **Diff Cover Report**
+      ```
+      # Just cat the file into the comment
+      $(cat reports/diff-cover.txt)
+      ```
+
+  # 2.3 Status Diff-cover
+  status-diff-cover:
+    image: plugins/drone-wire-status
+    succeed-if: |
+      # succeed if coverage above 30%
+      let cov = /Coverage\: ([\d\.]+)%/.exec(\`$(cat reports/diff-cover.txt)\`)
+      return cov && parseFloat(cov) > 30 /*`*/
+    url: '$(cat uploads/diff-cover.url)'
+
+  # 3. Post Comments to Github
+  post-comments-github:
+    image: plugins/drone-comment-github
+    # Check if there are any
+    if: "\`$(ls drone-comments)\`.split(/\s+/g).length > 0"
+    # cat all the files together in the drone-comments directory
+    body: "$(cat $(ls drone-comments))"
