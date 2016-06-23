@@ -1,0 +1,3 @@
+<reports/diff-cover.txt>
+Coverage: 50%
+</reports/diff-cover.txt>
