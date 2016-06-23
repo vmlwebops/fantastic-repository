@@ -29,7 +29,7 @@ pipeline:
 
   # 1.2 Status Test Report
   status-test-report:
-    image: plugins/drone-write-status
+    image: dryclean/drone-write-status:0.0.1
     out: drone-status/test-report.status
     # succeed if coverage above 10%
     succeed_if: |
@@ -41,7 +41,7 @@ pipeline:
 
   # 1.3 Comment Linting
   comment-linting:
-    image: dryclean/drone-write-file
+    image: dryclean/drone-write-file:0.0.1
     # Check length of file, if file has anything in it
     # this could be run as an argument of node -e,
     # Example: node -p "\`hello\`.replace(/[^l]/g, '').length"
@@ -60,7 +60,7 @@ pipeline:
 
   # 2. Run Diff-cover
   run-diff-cover:
-    image: dryclean/drone-diff-cover
+    image: dryclean/drone-diff-cover:0.0.1
     compare_branch: development
     cobertura_file: 'reports/cobertura-coverage.xml'
     output: 'reports/diff-cover.txt'
@@ -73,7 +73,7 @@ pipeline:
 
   # 2.2 Comment Diff-cover
   comment-diff-cover:
-    image: dryclean/drone-write-file
+    image: dryclean/drone-write-file:0.0.1
     # true would be default
     if: true
     out: "drone-comments/diff-cover"
@@ -85,7 +85,7 @@ pipeline:
 
   # 2.3 Status Diff-cover
   status-diff-cover:
-    image: dryclean/drone-write-status
+    image: dryclean/drone-write-status:0.0.1
     out: drone-status/diff-cover.status
     # succeed if coverage above 30%
     succeed_if: |
