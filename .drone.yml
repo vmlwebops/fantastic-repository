@@ -92,4 +92,3 @@ pipeline:
     if: "\`$(ls drone-comments)\`.split(/\s+/g).length > 0"
     # cat all the files together in the drone-comments directory
     body: "$(cat $(ls drone-comments))"
->>>>>>> 8073be85f9931dc8fd1e463f8bc91dc477038fc3
