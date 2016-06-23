@@ -30,18 +30,18 @@ pipeline:
   # 1.2 Status Test Report
   status-test-report:
     image: plugins/drone-write-status
-    out: drone-status/diff-cover.status
-    # succeed if coverage above 30%
+    out: drone-status/test-report.status
+    # succeed if coverage above 10%
     succeed_if: |
       function () {
         var cov = /Coverage: ([\d\.]+)%/.exec(`$(cat reports-mock/diff-cover.txt)`);
-        return cov && parseFloat(cov[1]) > 30;
+        return cov && parseFloat(cov[1]) > 10;
       }()
     url: '$(cat uploads-mock/diff-cover.url)'
 
   # 1.3 Comment Linting
   comment-linting:
-    image: plugins/drone-create-file
+    image: dryclean/drone-write-file
     # Check length of file, if file has anything in it
     # this could be run as an argument of node -e,
     # Example: node -p "\`hello\`.replace(/[^l]/g, '').length"
@@ -49,7 +49,7 @@ pipeline:
     # Example: node -p "\`$(ls)\`.split(/\s+/g).length"
     #          Counts the number of items in the pwd
     # The following could be a regex written to match 0 linting errors
-    if: '/\w+/.test(`$(cat reports/lint.txt)`)'
+    if: '/\w+/.test(`$(cat reports-mock/tslint-prose.txt)`)'
     # eval echo 'module.exports = '$(echo \"$PLUGIN_IF\") > plugin-if.js
     out: "drone-comments/linting"
     body: |
@@ -60,7 +60,7 @@ pipeline:
 
   # 2. Run Diff-cover
   run-diff-cover:
-    image: plugins/drone-diff-cover
+    image: dryclean/drone-diff-cover
     compare_branch: development
     cobertura_file: 'reports/cobertura-coverage.xml'
     output: 'reports/diff-cover.txt'
@@ -73,7 +73,7 @@ pipeline:
 
   # 2.2 Comment Diff-cover
   comment-diff-cover:
-    image: plugins/drone-create-file
+    image: dryclean/drone-write-file
     # true would be default
     if: true
     out: "drone-comments/diff-cover"
@@ -85,14 +85,15 @@ pipeline:
 
   # 2.3 Status Diff-cover
   status-diff-cover:
-    image: plugins/drone-wire-status
+    image: dryclean/drone-write-status
+    out: drone-status/diff-cover.status
     # succeed if coverage above 30%
     succeed_if: |
       function () {
-        var cov = /Coverage\: ([\d\.]+)%/.exec(`$(cat reports/diff-cover.txt)`)
-        return cov && parseFloat(cov[1]) > 30 /*`*/
+        var cov = /Coverage: ([\d\.]+)%/.exec(`$(cat reports-mock/diff-cover.txt)`);
+        return cov && parseFloat(cov[1]) > 30;
       }()
-    url: '$(cat uploads/diff-cover.url)'
+    url: '$(cat uploads-mock/diff-cover.url)'
 
   # 3. Post Comments to Github
   post-comments-github:
