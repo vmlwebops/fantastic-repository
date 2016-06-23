@@ -43,7 +43,7 @@ pipeline:
     # Example: node -p "\`$(ls)\`.split(/\s+/g).length"
     #          Counts the number of items in the pwd
     # The following could be a regex written to match 0 linting errors
-    if: "/\w+/.test(`$(cat reports/lint.txt)`)"
+    if: '/\w+/.test(\`$(cat reports/lint.txt)\`)'
     out: "drone-comments/linting"
     body: |
       **Linting Errors Found**
@@ -69,7 +69,7 @@ pipeline:
   comment-diff-cover:
     image: plugins/drone-create-file
     # true would be default
-    if: 'true'
+    if: true
     out: "drone-comments/diff-cover"
     body: |
       **Diff Cover Report**
@@ -91,6 +91,6 @@ pipeline:
   post-comments-github:
     image: plugins/drone-comment-github
     # Check if there are any
-    if: "\`$(ls drone-comments)\`.split(/\s+/g).length > 0"
+    if: '\`$(ls drone-comments)\`.split(/\s+/g).length > 0'
     # cat all the files together in the drone-comments directory
-    body: "$(cat $(ls drone-comments))"
+    body: '$(cat $(ls drone-comments))'
