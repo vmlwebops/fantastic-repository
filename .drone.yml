@@ -83,7 +83,7 @@ pipeline:
     # succeed if coverage above 30%
     succeed_if: |
       function () {
-        var cov = /Coverage\: ([\d\.]+)%/.exec(\`$(cat reports/diff-cover.txt)\`)
+        var cov = /Coverage\: ([\d\.]+)%/.exec(`$(cat reports/diff-cover.txt)`)
         return cov && parseFloat(cov[1]) > 30 /*`*/
       }()
     url: '$(cat uploads/diff-cover.url)'
@@ -92,6 +92,6 @@ pipeline:
   post-comments-github:
     image: plugins/drone-comment-github
     # Check if there are any
-    if: '\`$(ls drone-comments)\`.split(/\s+/g).length > 0'
+    if: '`$(ls drone-comments)`.split(/\s+/g).length > 0'
     # cat all the files together in the drone-comments directory
     body: '$(cat $(ls drone-comments))'
