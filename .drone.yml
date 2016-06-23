@@ -43,13 +43,12 @@ pipeline:
     # Example: node -p "\`$(ls)\`.split(/\s+/g).length"
     #          Counts the number of items in the pwd
     # The following could be a regex written to match 0 linting errors
-    if: '/\w+/.test(\`$(cat reports/lint.txt)\`)'
+    if: '/\w+/.test(`$(cat reports/lint.txt)`)'
     # eval echo 'module.exports = '$(echo \"$PLUGIN_IF\") > plugin-if.js
     out: "drone-comments/linting"
     body: |
       **Linting Errors Found**
       ```
-      # Just cat the file into the comment
       $(cat reports/lint.txt)
       ```
 
@@ -75,7 +74,6 @@ pipeline:
     body: |
       **Diff Cover Report**
       ```
-      # Just cat the file into the comment
       $(cat reports/diff-cover.txt)
       ```
 
