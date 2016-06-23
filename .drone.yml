@@ -56,8 +56,8 @@ pipeline:
   # 2. Run Diff-cover
   run-diff-cover:
     image: plugins/drone-diff-cover
-    compare-branch: development
-    cobertura-file: 'reports/cobertura-coverage.xml'
+    compare_branch: development
+    cobertura_file: 'reports/cobertura-coverage.xml'
     output: 'reports/diff-cover.txt'
 
   # 2.1 Upload Diff-cover
