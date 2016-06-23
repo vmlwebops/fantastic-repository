@@ -31,7 +31,7 @@ pipeline:
   status-test-report:
     image: plugins/drone-wire-status # `wire` is arbitrary name to tie the status creation with the status poster
     input: 'reports/test-report.json'
-    url: 'uploads/test-report.url' # Link to test report html such as mochawesome
+    url: '$(cat uploads/test-report.url)' # Link to test report html such as mochawesome
 
   # 1.3 Comment Linting
   comment-linting:
