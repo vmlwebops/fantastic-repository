@@ -16,6 +16,7 @@ pipeline:
     commands:
       - npm version
       - ls -lah
+      - git fetch --all --depth=1
       #- npm install --unsafe-perm > npm-install.log
       #- mkdir reports
       #- npm run lint --out=reports/lint.txt
