@@ -1,0 +1,4 @@
+src/app/about/about.component.ts[6, 1]: exceeds maximum line length of 90
+src/app/about/about.component.ts[41, 1]: exceeds maximum line length of 90
+src/app/about/about.component.ts[48, 1]: exceeds maximum line length of 90
+src/vendor.ts[3, 1]: exceeds maximum line length of 90

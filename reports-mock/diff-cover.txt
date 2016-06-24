@@ -1,0 +1,4 @@
+<diff-cover.txt>
+The following line is matched by a regex:
+Coverage: 20% <-- should fail < 30%
+</diff-cover.txt>
