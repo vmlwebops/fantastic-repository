@@ -62,7 +62,7 @@ pipeline:
   run-diff-cover:
     image: dryclean/drone-diff-cover
     compare_branch: development
-    cobertura_file: 'reports/cobertura-coverage.xml'
+    cobertura_file: '/coverage/PhantomJS*/cobertura-coverage.xml'
     output: 'reports/diff-cover.txt'
 
   # 2.1 Upload Diff-cover
